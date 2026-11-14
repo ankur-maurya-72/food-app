@@ -16,7 +16,7 @@ const Home = () => {
         const fetchtodos = async () => {
             try{
                 setLoading(true)
-                const response = await axios.get('http://localhost:8000/todo/fetch',{
+                const response = await axios.get('https://food-app-pse6.onrender.com/todo/fetch',{
                     headers:{
                         'Content-Type':'application/json'
                     },
@@ -36,7 +36,7 @@ const Home = () => {
     const todoCreate = async () => {
     if (!newTodo) return;
     try {
-        const response = await axios.post('http://localhost:8000/todo/create', {
+        const response = await axios.post('https://food-app-pse6.onrender.com/todo/create', {
             text: newTodo,
             completed: false
         }, {
@@ -54,7 +54,7 @@ const Home = () => {
     const todoUpdate = async (id) => {
         const todo = todos.find((t) => t._id === id)
         try{
-            const response = await axios.put(`http://localhost:8000/todo/update/${id}`,{
+            const response = await axios.put(`https://food-app-pse6.onrender.com/todo/update/${id}`,{
                 ...todo,
                 completed:!todo.completed                
             },{
@@ -68,7 +68,7 @@ const Home = () => {
 
     const todoDelete = async (id) => {
         try{
-            await axios.delete(`http://localhost:8000/todo/delete/${id}`,{withCredentials:true})
+            await axios.delete(`https://food-app-pse6.onrender.com/todo/delete/${id}`,{withCredentials:true})
             setTodos(todos.filter((t)=>t._id!==id))
         }catch(error){
             setError("Failed to delete todos")
@@ -77,7 +77,7 @@ const Home = () => {
 
     const logout = async () => {
         try{
-            await axios.get('http://localhost:8000/logout',{withCredentials:true});
+            await axios.get('https://food-app-pse6.onrender.com/logout',{withCredentials:true});
             toast.success("User logged out successfully");
             navigate("/login")
             localStorage.removeItem("token");

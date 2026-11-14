@@ -18,7 +18,7 @@ const Login = () => {
             setLoading(true)
             // http://localhost:8000/
             
-            const {data} = await axios.post('http://localhost:8000/login',{
+            const {data} = await axios.post('https://food-app-pse6.onrender.com/login',{
                 email,
                 password
             },{
